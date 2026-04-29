@@ -6,13 +6,13 @@
 //  2. No painel do Cloudinary, copie o "Cloud Name" (fica no canto superior esquerdo)
 //  3. Vá em Settings → Upload → Add upload preset
 //     - Signing mode: UNSIGNED
-//     - Defina um nome para o preset (ex: agrourb_products)
+//     - Defina um nome para o preset (ex: nexus_products)
 //     - Clique em Save
 //  4. Preencha as variáveis abaixo com seus dados
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const CLOUDINARY_CLOUD_NAME = 'dxzbkrtdp'; // ex: 'minha-empresa-123'
-export const CLOUDINARY_UPLOAD_PRESET = 'agrourb_products'; // ex: 'agrourb_products'
+export const CLOUDINARY_UPLOAD_PRESET = 'nexus_products'; // ex: 'nexus_products'
 
 export const isCloudinaryConfigured =
   !!(CLOUDINARY_CLOUD_NAME && CLOUDINARY_UPLOAD_PRESET);

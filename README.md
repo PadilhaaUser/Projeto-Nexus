@@ -1,6 +1,6 @@
-# Projeto Nexus (AgroUrb Management System)
+# Projeto Nexus
 
-O **Projeto Nexus** é um sistema de gestão interno, customizado e escalável, desenvolvido especificamente para a **AgroUrb**. A plataforma tem como objetivo centralizar e otimizar o fluxo de trabalho do escritório, abrangendo desde o controle de inventário de produtos e serviços até o gerenciamento de clientes e a geração automatizada de orçamentos em formato PDF.
+O **Projeto Nexus** é um sistema de gestão interno, customizado e escalável. A plataforma tem como objetivo centralizar e otimizar o fluxo de trabalho de uma empresa, abrangendo desde o controle de inventário de produtos e serviços até o gerenciamento de clientes e a geração automatizada de orçamentos em formato PDF.
 
 O sistema possui uma interface moderna, focada na usabilidade, adotando um visual **Dark Mode de alto contraste** para proporcionar uma experiência de usuário premium e profissional.
 
