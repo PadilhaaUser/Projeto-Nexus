@@ -8,7 +8,11 @@ export default function Layout() {
   const [mobileOpen, setMobileOpen] = useState(false);   // controle de mobile separado
 
   return (
-    <div className="h-screen flex overflow-hidden" style={{ background: '#000000' }}>
+    <div className="h-screen flex overflow-hidden relative" style={{ background: '#02000a' }}>
+      {/* Global subtle nebula */}
+      <div className="absolute top-[-10%] right-[-10%] w-[50vw] h-[50vw] bg-[#a855f7] opacity-10 blur-[150px] rounded-full pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#3b82f6] opacity-10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+
       <Sidebar
         isOpen={sidebarOpen}
         mobileOpen={mobileOpen}
@@ -26,7 +30,7 @@ export default function Layout() {
         {!mobileOpen && (
           <button
             onClick={() => setMobileOpen(true)}
-            className="md:hidden fixed bottom-6 right-6 z-40 p-4 rounded-full bg-primary text-white shadow-2xl hover:scale-110 active:scale-95 transition-all duration-200"
+            className="md:hidden fixed bottom-6 right-6 z-40 p-4 rounded-full bg-accent text-white shadow-2xl hover:scale-110 active:scale-95 transition-all duration-200"
             style={{ backgroundColor: '#4C562A' }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

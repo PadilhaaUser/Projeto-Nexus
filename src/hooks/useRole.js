@@ -1,7 +1,7 @@
 import { useAuth } from './useAuth';
 
 // Email do administrador principal — qualquer outro usuário é colaborador
-const ADMIN_EMAIL = 'admin@projetonexus.com.br';
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || 'admin@projetonexus.com.br';
 
 /**
  * Retorna o papel do usuário logado.

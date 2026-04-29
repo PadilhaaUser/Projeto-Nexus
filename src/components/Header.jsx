@@ -66,7 +66,7 @@ export default function Header({ toggleSidebar, toggleMobile }) {
       {/* Esquerda: botão mobile + título */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+          <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
             <Layers className="w-4.5 h-4.5" />
           </div>
           <div>
@@ -112,7 +112,7 @@ export default function Header({ toggleSidebar, toggleMobile }) {
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-500">{notificacoes.length} ativa{notificacoes.length !== 1 ? 's' : ''}</span>
                     {notificacoes.length > 0 && (
-                      <button onClick={clearNotificacoes} className="text-xs text-primary hover:text-primary-dark font-medium transition-colors">
+                      <button onClick={clearNotificacoes} className="text-xs text-accent hover:text-accent-light font-medium transition-colors">
                         Limpar
                       </button>
                     )}

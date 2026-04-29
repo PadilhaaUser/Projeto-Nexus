@@ -76,24 +76,24 @@ export default function Relatorios() {
       label: 'Confirmados',
       value: orcamentosConfirmados.length,
       icon: FileCheck,
-      bg: 'bg-green-50',
-      text: 'text-green-700',
+      bg: 'bg-green-500/10',
+      text: 'text-green-400',
       icon_color: 'text-green-400',
     },
     {
       label: 'Cancelados',
       value: orcamentosCancelados.length,
       icon: FileX,
-      bg: 'bg-red-50',
-      text: 'text-red-700',
+      bg: 'bg-red-500/10',
+      text: 'text-red-400',
       icon_color: 'text-red-400',
     },
     {
       label: 'Valor Confirmado',
       value: `R$ ${valorTotalConfirmado.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`,
       icon: DollarSign,
-      bg: 'bg-primary/8',
-      text: 'text-primary',
+      bg: 'bg-accent/10',
+      text: 'text-accent',
       icon_color: 'text-accent',
     },
   ];
@@ -101,10 +101,10 @@ export default function Relatorios() {
   return (
     <div className="animate-slide-up space-y-5">
       {/* Cabeçalho Simplificado */}
-      <div className="flex justify-between items-center bg-slate-200 p-4 rounded-2xl border border-slate-300 shadow-sm">
+      <div className="flex justify-between items-center bg-[#0f172a] p-4 rounded-2xl border border-[#1e293b] shadow-sm">
         <div>
-          <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Painel Analítico</p>
-          <p className="text-lg font-bold text-slate-900">Período: {MESES[Number(mes)]} / {ano}</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Painel Analítico</p>
+          <p className="text-lg font-bold text-white">Período: {MESES[Number(mes)]} / {ano}</p>
         </div>
         <button
           onClick={exportarPDF}
@@ -208,7 +208,7 @@ export default function Relatorios() {
                       </td>
                       <td className="px-6 py-3.5 text-sm font-medium text-white">{mov.produtoNome}</td>
                       <td className="px-6 py-3.5">
-                        <span className="text-sm font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                        <span className="text-sm font-bold text-red-400 bg-red-500/10 px-2 py-0.5 rounded-full">
                           -{mov.quantidade}
                         </span>
                       </td>

@@ -68,12 +68,7 @@ export default function Login() {
 
             {/* Logo Textual Nexus */}
             <div className="relative z-10 flex flex-col items-center mt-4">
-              <div className="w-16 h-16 mb-4 rounded-2xl bg-[#0f172a]/10 flex items-center justify-center border border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.1)]">
-                <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <h1 className="text-4xl font-black text-white tracking-tighter drop-shadow-lg">NEXUS</h1>
+              <img src="/logo-nexus.png" alt="Nexus Logo" className="w-56 h-auto object-contain mb-6 drop-shadow-lg" />
             </div>
 
             <div
@@ -92,7 +87,7 @@ export default function Login() {
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-100 text-red-600 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
+              <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-xl text-sm flex items-center gap-2">
                 <span>⚠</span> {error}
               </div>
             )}

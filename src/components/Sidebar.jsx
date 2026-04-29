@@ -38,21 +38,34 @@ export default function Sidebar({ isOpen, mobileOpen, toggleSidebar, closeMobile
       {/* Sidebar */}
       <div
         className={`
-          fixed inset-y-0 left-0 z-30 flex flex-col
+          fixed inset-y-0 left-0 z-30 flex flex-col overflow-hidden
           transition-all duration-300 ease-in-out
           md:static md:inset-auto md:flex
           ${mobileOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
           ${isOpen ? 'w-64' : 'w-16'}
         `}
         style={{
-          background: '#020617',
+          background: 'rgba(5, 3, 20, 0.7)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderRight: '1px solid rgba(255,255,255,0.05)',
           boxShadow: '4px 0 24px rgba(0,0,0,0.5)'
         }}
       >
 
+        {/* Starry background */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-80">
+          <div className="stars"></div>
+          <div className="stars2"></div>
+          <div className="stars3"></div>
+        </div>
+
         {/* Textura sutil original */}
-        <div className="absolute top-0 left-0 right-0 h-48 pointer-events-none"
+        <div className="absolute top-0 left-0 right-0 h-48 pointer-events-none z-0"
           style={{ background: 'radial-gradient(ellipse at top, rgba(255,255,255,0.06) 0%, transparent 70%)' }} />
+
+        {/* Wrapper z-10 para conteúdo */}
+        <div className="relative z-10 flex flex-col h-full w-full">
 
         {/* Topo: logo + hambúrguer (apenas na sidebar) */}
         <div className={`relative flex flex-col border-b border-white/10 flex-shrink-0 transition-all duration-300 ${isOpen ? 'items-center pt-8 pb-6 px-6' : 'items-center pt-4 pb-4 px-2'}`}>
@@ -73,16 +86,11 @@ export default function Sidebar({ isOpen, mobileOpen, toggleSidebar, closeMobile
           {/* Logo Original */}
           {isOpen ? (
             <div className="relative flex flex-col items-center justify-center mb-5 animate-fade-in mt-2">
-              <div className="w-12 h-12 mb-2 rounded-xl bg-[#0f172a]/10 flex items-center justify-center border border-white/20 shadow-lg">
-                <Layers className="w-6 h-6 text-white" />
-              </div>
-              <h2 className="text-xl font-black text-white tracking-tighter drop-shadow-md">NEXUS</h2>
+              <img src="/logo-nexus.png" alt="Nexus Logo" className="w-40 h-auto object-contain drop-shadow-md" />
             </div>
           ) : (
             <div className="flex items-center justify-center mb-4 mt-2">
-              <div className="w-10 h-10 rounded-xl bg-[#0f172a]/10 flex items-center justify-center border border-white/20 shadow-lg">
-                <Layers className="w-5 h-5 text-white" />
-              </div>
+              <img src="/logo-nexus.png" alt="Nexus Logo" className="w-10 h-10 object-contain drop-shadow-md" />
             </div>
           )}
 
@@ -176,17 +184,19 @@ export default function Sidebar({ isOpen, mobileOpen, toggleSidebar, closeMobile
           <div className={`flex items-center ${isOpen ? 'gap-2 px-2' : 'justify-center'} py-2 rounded-xl`}
             style={{ background: 'rgba(255,255,255,0.04)' }}>
             <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ background: 'linear-gradient(135deg, #3f3f46, #18181b)' }}>
-              <Layers className="w-3.5 h-3.5 text-white" />
+              style={{ background: 'linear-gradient(135deg, rgba(168,85,247,0.2), rgba(236,72,153,0.1))', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <Layers className="w-3.5 h-3.5 text-accent-light" />
             </div>
             {isOpen && (
               <div>
-                <p className="text-white/50 text-xs">Nexus Sistema</p>
-                <p className="text-white/30 text-xs">v1.0</p>
+                <p className="text-white/50 text-xs font-semibold uppercase tracking-wider">Nexus</p>
+                <p className="text-white/30 text-[10px]">Space Edition</p>
               </div>
             )}
           </div>
         </div>
+        
+        </div> {/* Fim wrapper z-10 */}
       </div>
     </>
   );

@@ -15,8 +15,8 @@ const statusConfig = {
 
 export default function Orcamentos() {
   const { isAdmin } = useRole();
-  const [activeTab, setActiveTab] = useState('Paisagismo');
-  const categorias = ['Paisagismo', 'Irrigação', 'Mão de Obra'];
+  const [activeTab, setActiveTab] = useState('Equipamentos');
+  const categorias = ['Equipamentos', 'Suprimentos', 'Serviços'];
   const [filtroStatus, setFiltroStatus] = useState('Todos');
   const [orcamentos, setOrcamentos] = useState([]);
   const [clientes, setClientes] = useState([]);
@@ -169,10 +169,10 @@ export default function Orcamentos() {
   return (
     <div className="animate-slide-up space-y-5">
       {/* Cabeçalho Simplificado */}
-      <div className="flex justify-between items-center bg-slate-200 p-4 rounded-2xl border border-slate-300 shadow-sm">
+      <div className="flex justify-between items-center bg-[#0f172a] p-4 rounded-2xl border border-[#1e293b] shadow-sm">
         <div>
-          <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Resumo de Propostas</p>
-          <p className="text-lg font-bold text-slate-900">{filteredOrcamentos.length} orçamento{filteredOrcamentos.length !== 1 ? 's' : ''} emitido{filteredOrcamentos.length !== 1 ? 's' : ''}</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Resumo de Propostas</p>
+          <p className="text-lg font-bold text-white">{filteredOrcamentos.length} orçamento{filteredOrcamentos.length !== 1 ? 's' : ''} emitido{filteredOrcamentos.length !== 1 ? 's' : ''}</p>
         </div>
         <button onClick={openNovoModal} className="btn-primary shadow-lg shadow-primary/20">
           <Plus className="w-4 h-4" />
@@ -186,7 +186,7 @@ export default function Orcamentos() {
           <button
             key={status}
             onClick={() => setFiltroStatus(status)}
-            className={`px-4 py-2 text-sm font-semibold rounded-t-xl transition-colors ${filtroStatus === status ? 'text-primary border-b-2 border-primary bg-primary/5' : 'text-slate-400 hover:text-slate-300 hover:bg-[#1e293b]/50'}`}
+            className={`px-4 py-2 text-sm font-semibold rounded-t-xl transition-colors ${filtroStatus === status ? 'text-accent border-b-2 border-accent bg-accent/5' : 'text-slate-400 hover:text-slate-300 hover:bg-[#1e293b]/50'}`}
           >
             {status}
           </button>
@@ -224,7 +224,7 @@ export default function Orcamentos() {
                 const sc = statusConfig[orc.status] || { label: orc.status, class: 'bg-[#1e293b] text-slate-400' };
                 return (
                   <tr key={orc.id} className="table-row-hover">
-                    <td className="px-6 py-4 text-sm font-bold text-primary">#{orc.numero}</td>
+                    <td className="px-6 py-4 text-sm font-bold text-accent">#{orc.numero}</td>
                     <td className="px-6 py-4 text-sm text-slate-400">
                       {new Date(orc.createdAt).toLocaleDateString('pt-BR')}
                     </td>
@@ -241,7 +241,7 @@ export default function Orcamentos() {
                       <div className="flex items-center justify-end gap-1">
                         <button
                           onClick={() => { setCurrentOrcamento(orc); setIsViewModalOpen(true); }}
-                          className="p-2 rounded-xl text-blue-500 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+                          className="p-2 rounded-xl text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 transition-colors"
                           title="Visualizar"
                         >
                           <Eye className="w-4 h-4" />
@@ -257,14 +257,14 @@ export default function Orcamentos() {
                           <>
                             <button
                               onClick={() => handleConfirmar(orc)}
-                              className="p-2 rounded-xl text-green-500 hover:text-green-700 hover:bg-green-50 transition-colors"
+                              className="p-2 rounded-xl text-green-400 hover:text-green-300 hover:bg-green-500/10 transition-colors"
                               title="Confirmar"
                             >
                               <CheckCircle className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() => handleCancelar(orc)}
-                              className="p-2 rounded-xl text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                              className="p-2 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
                               title="Cancelar"
                             >
                               <XCircle className="w-4 h-4" />
@@ -274,7 +274,7 @@ export default function Orcamentos() {
                         {isAdmin && (
                           <button
                             onClick={() => handleDelete(orc.id)}
-                            className="p-2 rounded-xl text-red-600 hover:text-red-800 hover:bg-red-50 transition-colors"
+                            className="p-2 rounded-xl text-red-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
                             title="Excluir"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -318,7 +318,7 @@ export default function Orcamentos() {
                   <button
                     key={cat}
                     onClick={() => setActiveTab(cat)}
-                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition-colors ${activeTab === cat ? 'bg-primary text-white shadow-sm' : 'bg-[#334155] text-slate-400 hover:bg-gray-300'}`}
+                    className={`px-3 py-1.5 text-xs font-semibold rounded-lg whitespace-nowrap transition-colors ${activeTab === cat ? 'bg-accent text-white shadow-sm' : 'bg-[#334155] text-slate-400 hover:bg-gray-300'}`}
                   >
                     {cat}
                   </button>
@@ -338,9 +338,9 @@ export default function Orcamentos() {
                     {produtos
                       .filter(p => {
                         const catStr = (p.categoria || '').toLowerCase();
-                        if (activeTab === 'Paisagismo') return catStr.includes('paisagismo');
-                        if (activeTab === 'Irrigação') return catStr.includes('irriga');
-                        if (activeTab === 'Mão de Obra') return catStr.includes('obra');
+                        if (activeTab === 'Equipamentos') return catStr.includes('equipamento');
+                        if (activeTab === 'Suprimentos') return catStr.includes('suprimento');
+                        if (activeTab === 'Serviços') return catStr.includes('serviço') || catStr.includes('servico');
                         return false;
                       })
                       .map((p) => {
@@ -413,7 +413,7 @@ export default function Orcamentos() {
               
               <div className="px-4 py-4 bg-[#1e293b]/50 flex justify-between items-center border-t border-[#334155] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
                 <span className="text-sm text-slate-400 font-bold uppercase tracking-wider">Total Geral</span>
-                <span className="text-xl font-bold text-primary">
+                <span className="text-xl font-bold text-accent">
                   R$ {calcularTotal().toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -470,7 +470,7 @@ export default function Orcamentos() {
               </div>
               <div className="bg-[#1e293b]/50 rounded-xl p-3">
                 <span className="text-xs text-slate-400 block mb-1">Valor Total</span>
-                <span className="text-sm font-bold text-primary">
+                <span className="text-sm font-bold text-accent">
                   R$ {currentOrcamento.valorTotal?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                 </span>
               </div>
@@ -489,9 +489,9 @@ export default function Orcamentos() {
                     </div>
                   ))}
                 </div>
-                <div className="px-4 py-3 bg-primary/5 flex justify-between border-t border-[#1e293b]">
+                <div className="px-4 py-3 bg-accent/5 flex justify-between border-t border-[#1e293b]">
                   <span className="text-sm font-medium text-slate-400">Total</span>
-                  <span className="text-base font-bold text-primary">
+                  <span className="text-base font-bold text-accent">
                     R$ {currentOrcamento.valorTotal?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                   </span>
                 </div>

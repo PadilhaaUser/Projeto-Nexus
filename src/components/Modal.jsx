@@ -52,8 +52,8 @@ export default function Modal({ isOpen, onClose, title, children, fullScreen }) 
           height: fullScreen ? '95vh' : 'auto',
           margin: 'auto',
           borderRadius: '1rem',
-          background: 'rgba(255,255,255,0.98)',
-          boxShadow: '0 32px 80px rgba(0,0,0,0.30), 0 0 0 1px rgba(255,255,255,0.15)',
+          background: '#0f172a',
+          boxShadow: '0 32px 80px rgba(0,0,0,0.50), 0 0 0 1px rgba(255,255,255,0.08)',
           overflow: 'hidden',
           display: fullScreen ? 'flex' : 'block',
           flexDirection: fullScreen ? 'column' : 'unset',
@@ -67,10 +67,10 @@ export default function Modal({ isOpen, onClose, title, children, fullScreen }) 
             alignItems: 'center',
             justifyContent: 'space-between',
             padding: '1rem 1.5rem',
-            borderBottom: '1px solid rgba(0,0,0,0.07)',
+            borderBottom: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#111827', margin: 0 }}>
+          <h3 style={{ fontSize: '0.9375rem', fontWeight: 600, color: '#f8fafc', margin: 0 }}>
             {title}
           </h3>
           <button
@@ -85,7 +85,7 @@ export default function Modal({ isOpen, onClose, title, children, fullScreen }) 
               display: 'flex',
               alignItems: 'center',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#f3f4f6'; e.currentTarget.style.color = '#374151'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#1e293b'; e.currentTarget.style.color = '#f8fafc'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#9ca3af'; }}
           >
             <X size={18} />

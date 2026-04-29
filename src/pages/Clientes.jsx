@@ -110,10 +110,10 @@ export default function Clientes() {
     <div className="animate-slide-up space-y-5">
       {/* Cabeçalho */}
       {/* Cabeçalho Simplificado */}
-      <div className="flex justify-between items-center bg-slate-200 p-4 rounded-2xl border border-slate-300 shadow-sm">
+      <div className="flex justify-between items-center bg-[#0f172a] p-4 rounded-2xl border border-[#1e293b] shadow-sm">
         <div>
-          <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Base de Contatos</p>
-          <p className="text-lg font-bold text-slate-900">{clientes.length} cliente{clientes.length !== 1 ? 's' : ''} registrado{clientes.length !== 1 ? 's' : ''}</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Base de Contatos</p>
+          <p className="text-lg font-bold text-white">{clientes.length} cliente{clientes.length !== 1 ? 's' : ''} registrado{clientes.length !== 1 ? 's' : ''}</p>
         </div>
         <button onClick={() => openModal()} className="btn-primary shadow-lg shadow-primary/20">
           <Plus className="w-4 h-4" />
@@ -188,7 +188,7 @@ export default function Clientes() {
                     <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={() => openModal(cliente)}
-                        className="p-2 rounded-xl text-indigo-500 hover:text-indigo-700 hover:bg-indigo-50 transition-colors"
+                        className="p-2 rounded-xl text-indigo-400 hover:text-indigo-300 hover:bg-indigo-500/10 transition-colors"
                         title="Editar"
                       >
                         <Edit2 className="w-4 h-4" />
@@ -196,7 +196,7 @@ export default function Clientes() {
                       {isAdmin && (
                         <button
                           onClick={() => handleDelete(cliente.id)}
-                          className="p-2 rounded-xl text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                          className="p-2 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
                           title="Excluir"
                         >
                           <Trash2 className="w-4 h-4" />

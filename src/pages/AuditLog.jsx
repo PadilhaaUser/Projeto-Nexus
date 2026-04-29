@@ -3,17 +3,17 @@ import { ClipboardList, RefreshCw, Package, Users, FileText, CheckCircle, XCircl
 import { getAuditLog } from '../services/auditLog';
 
 const actionConfig = {
-  created:   { label: 'Criado',     icon: Plus,         bg: 'bg-green-50',  text: 'text-green-600',  dot: 'bg-green-400' },
-  updated:   { label: 'Editado',    icon: Edit2,        bg: 'bg-blue-50',   text: 'text-blue-600',   dot: 'bg-blue-400'  },
-  deleted:   { label: 'Excluído',   icon: Trash2,       bg: 'bg-red-50',    text: 'text-red-600',    dot: 'bg-red-400'   },
-  confirmed: { label: 'Confirmado', icon: CheckCircle,  bg: 'bg-primary/8', text: 'text-primary',    dot: 'bg-accent'    },
-  cancelled: { label: 'Cancelado',  icon: XCircle,      bg: 'bg-orange-50', text: 'text-orange-600', dot: 'bg-orange-400'},
+  created:   { label: 'Criado',     icon: Plus,         bg: 'bg-green-500/10 border border-green-500/20',  text: 'text-green-400',  dot: 'bg-green-400' },
+  updated:   { label: 'Editado',    icon: Edit2,        bg: 'bg-blue-500/10 border border-blue-500/20',   text: 'text-blue-400',   dot: 'bg-blue-400'  },
+  deleted:   { label: 'Excluído',   icon: Trash2,       bg: 'bg-red-500/10 border border-red-500/20',    text: 'text-red-400',    dot: 'bg-red-400'   },
+  confirmed: { label: 'Confirmado', icon: CheckCircle,  bg: 'bg-green-500/10 border border-green-500/20', text: 'text-green-400',    dot: 'bg-green-400'    },
+  cancelled: { label: 'Cancelado',  icon: XCircle,      bg: 'bg-orange-500/10 border border-orange-500/20', text: 'text-orange-400', dot: 'bg-orange-400'},
 };
 
 const entityConfig = {
-  produto:   { label: 'Produto',   icon: Package,  color: 'text-indigo-500',  bg: 'bg-indigo-50'  },
-  cliente:   { label: 'Cliente',   icon: Users,    color: 'text-teal-500',    bg: 'bg-teal-50'    },
-  orcamento: { label: 'Orçamento', icon: FileText, color: 'text-amber-500',   bg: 'bg-amber-50'   },
+  produto:   { label: 'Produto',   icon: Package,  color: 'text-indigo-400',  bg: 'bg-indigo-500/10'  },
+  cliente:   { label: 'Cliente',   icon: Users,    color: 'text-teal-400',    bg: 'bg-teal-500/10'    },
+  orcamento: { label: 'Orçamento', icon: FileText, color: 'text-amber-500',   bg: 'bg-amber-500/10'   },
 };
 
 const tempoRelativo = (iso) => {
@@ -57,10 +57,10 @@ export default function AuditLog() {
   return (
     <div className="animate-slide-up space-y-5">
       {/* Cabeçalho Simplificado */}
-      <div className="flex justify-between items-center bg-slate-200 p-4 rounded-2xl border border-slate-300 shadow-sm">
+      <div className="flex justify-between items-center bg-[#0f172a] p-4 rounded-2xl border border-[#1e293b] shadow-sm">
         <div>
-          <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Rastreabilidade</p>
-          <p className="text-lg font-bold text-slate-900">Histórico de Atividades</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Rastreabilidade</p>
+          <p className="text-lg font-bold text-white">Histórico de Atividades</p>
         </div>
         <button onClick={fetchLogs} disabled={loading} className="btn-primary shadow-lg shadow-primary/20">
           <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />

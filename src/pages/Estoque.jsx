@@ -86,7 +86,7 @@ export default function Estoque() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const isServico = categorias.includes('Mão de Obra');
+    const isServico = categorias.includes('Serviços');
     const prodData = {
       nome,
       descricao,
@@ -130,9 +130,9 @@ export default function Estoque() {
       // Filtrar por tab se houver (considerando categorias fixas sugeridas)
       if (tab) {
         const catStr = (p.categoria || '').toLowerCase();
-        if (tab === 'paisagismo' && !catStr.includes('paisagismo')) return false;
-        if (tab === 'irrigacao' && !catStr.includes('irriga')) return false;
-        if (tab === 'maodeobra' && !catStr.includes('obra')) return false;
+        if (tab === 'equipamentos' && !catStr.includes('equipamento')) return false;
+        if (tab === 'suprimentos' && !catStr.includes('suprimento')) return false;
+        if (tab === 'servicos' && !catStr.includes('serviço') && !catStr.includes('servico')) return false;
       }
       return true;
     })
@@ -157,10 +157,10 @@ export default function Estoque() {
     <div className="animate-slide-up space-y-5">
       {/* Cabeçalho */}
       {/* Cabeçalho Simplificado */}
-      <div className="flex justify-between items-center bg-slate-200 p-4 rounded-2xl border border-slate-300 shadow-sm">
+      <div className="flex justify-between items-center bg-[#0f172a] p-4 rounded-2xl border border-[#1e293b] shadow-sm">
         <div>
-          <p className="text-xs font-bold text-slate-600 uppercase tracking-widest">Resumo de Inventário</p>
-          <p className="text-lg font-bold text-slate-900">{produtos.length} produto{produtos.length !== 1 ? 's' : ''} registrado{produtos.length !== 1 ? 's' : ''}</p>
+          <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">Resumo de Inventário</p>
+          <p className="text-lg font-bold text-white">{produtos.length} produto{produtos.length !== 1 ? 's' : ''} registrado{produtos.length !== 1 ? 's' : ''}</p>
         </div>
         <button onClick={() => openModal()} className="btn-primary shadow-lg shadow-primary/20">
           <Plus className="w-4 h-4" />
@@ -248,7 +248,7 @@ export default function Estoque() {
                         )}
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-white group-hover:text-primary transition-colors">{produto.nome}</p>
+                        <p className="text-sm font-semibold text-white group-hover:text-accent transition-colors">{produto.nome}</p>
                         {(!tab || tab === 'todos') && (
                           <p className="text-xs text-slate-500 truncate max-w-[200px]">{produto.descricao}</p>
                         )}
@@ -291,14 +291,14 @@ export default function Estoque() {
                     <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={(e) => openModal(produto, e)}
-                        className="p-2 rounded-xl text-violet-500 hover:text-violet-700 hover:bg-violet-50 transition-colors"
+                        className="p-2 rounded-xl text-violet-500 hover:text-violet-400 hover:bg-violet-500/10 transition-colors"
                         title="Editar"
                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button
                         onClick={(e) => handleDelete(produto.id, produto.imageUrl, e)}
-                        className="p-2 rounded-xl text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                        className="p-2 rounded-xl text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-colors"
                         title="Excluir"
                       >
                         <Trash2 className="w-4 h-4" />
@@ -340,7 +340,7 @@ export default function Estoque() {
                   </span>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-bold text-slate-900">R$ {selectedProduto.preco?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                  <p className="text-lg font-bold text-white">R$ {selectedProduto.preco?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
                   {!selectedProduto.categoria?.includes('Mão de Obra') && (
                     <p className={`text-sm font-bold ${selectedProduto.quantidade <= (selectedProduto.minQuantidade || 5) ? 'text-rose-400' : 'text-emerald-400'}`}>
                       Estoque: {selectedProduto.quantidade} un.
@@ -378,7 +378,7 @@ export default function Estoque() {
           <div className="flex flex-col items-center">
             {isCloudinaryConfigured ? (
               <div
-                className="w-full h-32 rounded-xl border-2 border-dashed border-[#334155] flex flex-col items-center justify-center cursor-pointer hover:border-accent hover:bg-green-50/30 transition-all duration-200 overflow-hidden relative group"
+                className="w-full h-32 rounded-xl border-2 border-dashed border-[#334155] flex flex-col items-center justify-center cursor-pointer hover:border-accent hover:bg-white/5 transition-all duration-200 overflow-hidden relative group"
                 onClick={() => document.getElementById('img-upload-produto').click()}
               >
                 {imagemPreview ? (
@@ -397,11 +397,11 @@ export default function Estoque() {
                 )}
               </div>
             ) : (
-              <div className="w-full py-3 px-4 rounded-xl border-2 border-dashed border-[#334155] bg-amber-50/40 flex items-center gap-3">
+              <div className="w-full py-3 px-4 rounded-xl border-2 border-dashed border-[#334155] bg-amber-500/5 flex items-center gap-3">
                 <ImagePlus className="h-6 w-6 text-amber-400 flex-shrink-0" />
                 <div>
-                  <p className="text-xs font-semibold text-amber-700">Imagens via Cloudinary</p>
-                  <p className="text-xs text-amber-600 mt-0.5">Configure o Cloudinary em <code className="bg-amber-100 px-1 rounded">src/config/cloudinary.js</code> para ativar</p>
+                  <p className="text-xs font-semibold text-amber-400">Imagens via Cloudinary</p>
+                  <p className="text-xs text-amber-500 mt-0.5">Configure o Cloudinary em <code className="bg-amber-500/20 px-1 rounded">src/config/cloudinary.js</code> para ativar</p>
                 </div>
               </div>
             )}
@@ -486,7 +486,7 @@ export default function Estoque() {
           <div>
             <label className="block text-xs font-semibold text-slate-400 mb-1.5">Categorias</label>
             <div className="flex gap-4">
-              {['Paisagismo', 'Irrigação', 'Mão de Obra'].map((cat) => (
+              {['Equipamentos', 'Suprimentos', 'Serviços'].map((cat) => (
                 <label key={cat} className="flex items-center gap-2 cursor-pointer text-sm text-slate-400">
                   <input
                     type="checkbox"
@@ -496,7 +496,7 @@ export default function Estoque() {
                         prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
                       );
                     }}
-                    className="rounded border-[#475569] text-primary focus:ring-primary"
+                    className="rounded border-[#475569] text-accent focus:ring-accent"
                   />
                   {cat}
                 </label>
